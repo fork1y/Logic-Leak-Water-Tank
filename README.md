@@ -10,7 +10,7 @@ The system is organized into three layers
 • Raspberry Pi4 - primary controller; reads the level sensor and drives the relays.  
 • HC-SR04 ultrasonic sensor - measures the water level in the tank.  
 • relay modules (2x) - switch the two pumps on/off under GPIO control.  
-• 5V DC pumps - pump 1 fills the water tank from the reservoir; pump 2 recirculates/drains back to the reservior.  
+• 5V DC pumps (2x) - pump 1 fills the water tank from the reservoir; pump 2 recirculates/drains back to the reservior.  
 • Water tank and reservoir.  
 
 ### 2) Control Layer
