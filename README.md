@@ -15,7 +15,7 @@ The system is organized into three layers
 
 ### 2) Control Layer
 • Python  
-• Modbus TCP
+• Modbus TCP  
 • Mango Automation (https://radixiot.com/)
 
 ### 3) Security
