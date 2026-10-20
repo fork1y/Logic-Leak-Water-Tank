@@ -14,3 +14,9 @@ The system is organized into three layers
 • Water tank and reservoir.  
 
 ### 2) Control Layer
+• Python  
+• Modbus TCP
+• Mango Automation (https://radixiot.com/)
+
+### 3) Security
+
