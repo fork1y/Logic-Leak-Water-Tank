@@ -1,40 +1,40 @@
-# Deploying the Pi + Mango System (beginner guide, Frontier-network path)
+# Deploying the Pi + Mango System (guide)
 
-This brings up the control system on your existing Frontier Wi-Fi/router — no
-switch needed yet. You move to the isolated switch only for the attack phase.
+This brings up the control system on your existing Wi-Fi/router 
+Can also move to the isolated switch if needed.
 
-Devices for now: **the Pi** (controller) and **Laptop 1** (SSH + Mango).
+Devices: **the Pi** (controller) and **Computer 1** (SSH + Mango).
 
 ---
 
 ## Step 1 — Get the Pi on the network and reachable
 
-1. Connect the **Pi to your Frontier network** — ethernet into a router LAN
-   port (most reliable) or the Pi's Wi-Fi. Put **Laptop 1 on the same
+1. Connect the **Pi to your network** — ethernet into a router LAN
+   port (most reliable) or the Pi's Wi-Fi. Put **Computer 1 on the same
    network**.
 2. On the Pi, find its IP address:
    ```bash
    hostname -I        # e.g. 192.168.1.37  -> this is the Pi's IP
    ```
-3. Enable SSH once (so you can work from Laptop 1 without a monitor):
+3. Enable SSH once (so you can work from Computer 1 without a monitor):
    ```bash
    sudo raspi-config   # Interface Options -> SSH -> Enable
    ```
-4. From **Laptop 1**, confirm you can reach and log into the Pi:
+4. From **Computer 1**, confirm you can reach and log into the Pi:
    ```bash
    ping 192.168.1.37
    ssh pi@192.168.1.37
    ```
    A login prompt means the network foundation is done.
 
-> Tip: in the Frontier router admin page, set a **DHCP reservation** for the
+> Tip: in the Internet router admin page, set a **DHCP reservation** for the
 > Pi so its IP never changes — otherwise Mango may lose it after a reboot.
 
 ---
 
 ## Step 2 — Put the control program on the Pi and start it
 
-1. Copy the project folder to the Pi (from Laptop 1, where the unzipped
+1. Copy the project folder to the Pi (from Computer 1, where the unzipped
    `water-tank-ics` lives):
    ```bash
    scp -r water-tank-ics pi@192.168.1.37:~/
