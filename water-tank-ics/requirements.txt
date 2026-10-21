@@ -1,0 +1,6 @@
+# Water Tank ICS Controller — Python dependencies
+# Install on the Raspberry Pi:  pip install -r requirements.txt
+
+pymodbus>=3.6,<3.7     # async Modbus TCP server
+PyYAML>=6.0            # config.yaml loader
+RPi.GPIO>=0.7.1        # Raspberry Pi GPIO access (Pi only)

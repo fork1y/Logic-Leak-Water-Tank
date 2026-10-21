@@ -1,0 +1,47 @@
+# =============================================================================
+# Water Tank ICS Controller — configuration (single source of truth)
+# =============================================================================
+# Calibrated for the real tank: sensor at the top, 0 cm = surface at sensor
+# (full), ~26.4 cm = bottom (empty). level_mm = (tank_empty_cm - distance) * 10.
+# =============================================================================
+
+gpio:
+  mode: BCM            # BCM = GPIOxx numbering
+
+sensor:                # HC-SR04 ultrasonic (measures distance in cm)
+  trig_pin: 4          # physical pin 7
+  echo_pin: 17         # physical pin 11
+  tank_empty_cm: 26.4  # distance when EMPTY (bottom)        -> level 0 mm
+  tank_full_cm: 0.0    # distance when FULL (surface at sensor) -> level span
+  samples: 9           # readings per measurement (median-filtered); more = steadier
+  timeout_s: 0.04      # echo timeout; guards a lost echo
+  # => usable level span = (26.4 - 0) * 10 = 264 mm.
+
+pumps:
+  # Keyes/SRD relay boards are usually ACTIVE-LOW: GPIO LOW = relay ON.
+  active_low: true
+  pump1:               # INLET  — Reservoir -> Tank  (fill)
+    relay_pin: 23
+  pump2:               # OUTLET — Tank -> Reservoir  (drain/recirc)
+    relay_pin: 24
+
+control:
+  mode_on_boot: AUTO       # AUTO | MANUAL
+  # Setpoints in MILLIMETERS of water height above the bottom.
+  low_setpoint_mm: 44      # AUTO: inlet ON  below this   (22 cm distance)
+  high_setpoint_mm: 94     # AUTO: inlet OFF at/above     (17 cm distance)
+  highhigh_mm: 134         # overflow: inlet OFF in ANY mode (13 cm distance)
+  dry_min_mm: 20           # dry-run guard: outlet OFF at/below (~24.4 cm distance)
+  loop_interval_s: 0.5     # control loop period, seconds
+  # --- noise hardening (stops relay-noise pump chatter) ---
+  min_switch_interval_s: 5.0   # inlet can't change state faster than this
+  max_jump_mm: 40              # reject level jumps bigger than this unless confirmed
+
+modbus:
+  host: 0.0.0.0        # listen on all interfaces (Mango + attacker reach it)
+  port: 502            # standard Modbus TCP; use 5020 to run without root
+  unit_id: 1           # slave/unit id Mango should poll
+
+logging:
+  level: INFO          # DEBUG | INFO | WARNING | ERROR
+  file: logs/watertank.log
