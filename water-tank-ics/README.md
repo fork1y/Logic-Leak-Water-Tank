@@ -1,8 +1,5 @@
 # Water Tank ICS / SCADA Testbed — Controller Software
 
-```
-
-## Layout
 
 | Path                         | Purpose                                      |
 |------------------------------|----------------------------------------------|
