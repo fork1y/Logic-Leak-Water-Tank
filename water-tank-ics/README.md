@@ -34,7 +34,7 @@ Verify the logic without hardware (runs on any laptop; uses stub RPi.GPIO +
 pymodbus in `tests/_stubs`, so it needs no pip installs):
 
 ```bash
-PYTHONPATH=tests/_stubs:. python3 tests/smoke_test.py
+PYTHONPATH=tests/_stubs:. python3 tests/testing_test.py
 ```
 
 Install as a service:
