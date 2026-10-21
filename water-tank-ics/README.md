@@ -1,9 +1,5 @@
 # Water Tank ICS / SCADA Testbed — Controller Software
 
-Raspberry Pi control software for a water-tank ICS testbed: it reads an HC-SR04
-level sensor, drives two relay-controlled pumps with safe control logic, and
-exposes the plant over **Modbus TCP** so Mango Automation SCADA can poll and
-command it. Built to be attacked (Modbus injection / replay) and then hardened.
 
 ## Architecture
 
@@ -63,16 +59,6 @@ sudo systemctl enable --now watertank
 journalctl -u watertank -f
 ```
 
-## ⚠️ Before you energize the pumps — verify these pins in `config.yaml`
-
-Defaults are read from the wiring diagram but **not confirmed**:
-
-| Function          | Default GPIO | Confirm? |
-|-------------------|--------------|----------|
-| Relay 1 / Pump 1  | GPIO23       | ☐        |
-| Relay 2 / Pump 2  | GPIO24       | ☐        |
-| HC-SR04 Trig      | GPIO17       | ☐        |
-| HC-SR04 Echo      | GPIO27       | ☐ + divider |
 
 - **Relay polarity:** Keyes/SRD boards are usually active-low (`active_low: true`).
   If pumps run when they should be off, flip it.
