@@ -1,16 +1,5 @@
 # Water Tank ICS / SCADA Testbed — Controller Software
 
-
-## Architecture
-
-```
-HC-SR04 ─► sensor.py ┐
-                     ├─► controller.py ──► pumps.py ─► Relay1/2 ─► Pumps
-Relays  ◄─ pumps.py ─┘        │  (state machine: AUTO hysteresis / REMOTE)
-                             state.py  (thread-safe shared PlantState)
-                               │
-                        modbus_server.py (async pymodbus) ◄── Mango SCADA / HMI
-                                                            ◄── attacker box
 ```
 
 ## Layout
