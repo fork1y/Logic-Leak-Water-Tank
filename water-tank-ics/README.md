@@ -59,11 +59,4 @@ journalctl -u watertank -f
 - **REMOTE** — Pi obeys Modbus pump commands from SCADA/HMI.
 - Switch modes by writing coil `MODE_REMOTE`. Safety limits apply in both.
 
-## Roadmap
-
-- [x] Phase 0–3: controller + Modbus TCP (this scaffold)
-- [ ] Phase 4: Mango Automation + HMI integration
-- [ ] Phase 5: baseline attack validation (Nmap / injection / replay PoCs)
-- [ ] Phase 6: security hardening (allowlist, write validation, audit, alerts)
-      then re-test
 ```
