@@ -1,0 +1,9 @@
+# Water Tank ICS Controller — Python dependencies
+# Install on the Raspberry Pi:  pip install -r requirements.txt --break-system-packages
+#
+# pymodbus is PINNED to 3.6.x: the ModbusSlaveContext / datastore API this
+# project uses changed in 3.7+, so do not relax this pin.
+
+pymodbus>=3.6,<3.7     # async Modbus TCP server (3.6.9 known-good)
+PyYAML>=6.0            # config.yaml loader
+RPi.GPIO>=0.7.1        # Raspberry Pi GPIO access (Pi only)
